@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin>>n;
+    int x=0;
+    while(n--){
+        int m;
+        cin>>m;
+        int a[m][m];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<m;j++){
+                cin>>a[i][j];
+               // cout<<a[i][j]<<" ";
+                
+            }
+            //cout<<endl;
+            
+        }
+        int t=0,l=0,p=0,q=0,r=0;
+        for(int i=0;i<m;i++){
+            t+=a[i][i];
+            
+        }
+        for(int i=0;i<m;i++){
+            int b[m]={0};
+            for(int j=0;j<m;j++){
+                if(b[a[i][j]-1]==1){
+                    l++;
+                    break;
+                }
+                b[a[i][j]-1]++;
+            }
+            int c[m]={0};
+            for(int j=0;j<m;j++){
+                 //cout<<a[j][i]<<" ";
+                   
+                if(c[a[j][i]-1]==1){
+                   // cout<<a[j][i]<<" ";
+                    p++;
+                    break;
+                }
+                c[a[j][i]-1]++;
+            }
+            
+            
+        }
+        x++;
+        cout<<"Case #"<<x<<": "<<t<<" "<<l<<" "<<p<<endl; 
+    }
+}

@@ -1,0 +1,96 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int s,e,x=0;
+    while(n--){
+        x++;
+        int m;
+        cin>>m;
+        vector<pair<int,pair<int,int>>> a;
+        vector<pair<int,int>> d,b;
+        int k,l;
+        char c[m+1];
+        
+        for(int i=0;i<m;i++){
+            cin>>k>>l;
+            a.push_back(make_pair(k,make_pair(l,i)));
+            
+        }
+        int f=0;
+        sort(a.begin(),a.end());
+        for(int i=0;i<m;i++){
+            s=a[i].first;
+            e=a[i].second.first;
+            
+            if(f==0){
+                f=1;
+                c[a[i].second.second]='C';
+                d.push_back(make_pair(s,e));
+                
+            }
+            else
+            {
+                if(f!=-1){
+                    f=0;
+                    for(int j=0;j<d.size();j++){
+                        if(d[j].first<=s&&d[j].second>s){
+                            f=1;
+                            break;
+                            
+                        }
+                        if(d[j].first<=e&&d[j].second>e){
+                            f=1;
+                            break;
+                            
+                        }
+                    }
+                    if(f==0){
+                        f=1;
+                        c[a[i].second.second]='C';
+                        d.push_back(make_pair(s,e));
+                
+                    }
+                    else
+                    {f=0;
+                        for(int j=0;j<b.size();j++){
+                        if(b[j].first<=s&&b[j].second>s){
+                            f=-1;
+                            break;
+                            
+                        }
+                        if(b[j].first<=e&&b[j].second>e){
+                            f=-1;
+                            break;
+                            
+                        }
+                        }
+                        if(f==0){
+                            f=1;c[a[i].second.second]='J';
+                        b.push_back(make_pair(s,e));
+                
+                        }
+                    }
+                    
+                }
+                else
+                break;
+              
+            }
+        }
+        
+        if(f==-1){
+            cout<<"Case #"<<x<<": "<<"IMPOSSIBLE"<<endl;
+        }
+        else
+        {
+            cout<<"Case #"<<x<<": ";
+            for(int i=0;i<m;i++){
+                cout<<c[i];
+            }
+            cout<<endl;
+        }
+        
+    }
+}

@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+//#define append push_back
+int main() {
+    int n;
+    cin>>n;
+    int x=0;
+    while(n--){
+        x++;
+        string s;
+        cin>>s;
+        vector<char> c;
+        int a[s.size()+2];
+        for(int i=1;i<=s.size();i++)
+        {a[i]=s[i-1]-'0';
+        //cout<<a[i]<<" ";
+        }a[0]=0;
+        a[s.size()+1]=0;
+        int t=0;
+        for(int i=1;i<=s.size()+1;i++){
+            t=a[i]-a[i-1];
+            if(t>0){
+                while(t--){
+                    c.push_back('(');
+                    
+                }
+                c.push_back(a[i]+'0');
+                
+            }
+            else if(t<0)
+            {
+                t=-t;
+                while(t--){
+                    c.push_back(')');
+                    
+                }
+                c.push_back(a[i]+'0');
+                
+            }
+            else
+            {
+                c.push_back(a[i]+'0');
+                
+            }
+        }
+        cout<<"Case #"<<x<<":"<<" ";
+        for(int i=0;i<c.size()-1;i++){
+            cout<<c[i];
+        }
+        cout<<endl;
+    }
+    
+}
